@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiendaVirtual</title> <!-- Título que aparece en la pestaña -->
+    <link rel="icon" href="{{ url_for('static', filename='bo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <!-- <a href="index.html">
+            <img class="header__logo" src="img/logo.png" alt="Logotipo">
+        </a>-->
+        <h1>TIENDA DE ROPA<img src="{{ url_for('static', filename='img/bo.png') }}" alt="Bandera de Bolivia"
+                style="height: 30px; width: auto; vertical-align: middle; margin-left: 8px;"></h1>
+    </header>
+
+    <nav class="navegacion">
+        <a class="navegacion__enlace navegacion__enlace--activo" href="{{ url_for('tienda') }}">Tienda</a>
+        <a class="navegacion__enlace" href="{{ url_for('nosotros') }}">Nosotros</a>
+    </nav>
+
+    <main class="contenedor">
+        <h1>{{ producto['nombre'] }}</h1>
+
+        <div class="camisa">
+            <img class="camisa__imagen" src="{{ url_for('static', filename='img/' + producto['imagen']) }}"
+                alt="Imagen del Producto">
+            <div class="camisa__contenido">
+                <h2>{{ producto['nombre'] }}</h2>
+                <p>Nuestras camisas están confeccionadas con materiales de alta calidad, brindando comodidad, estilo y
+                    durabilidad. Ideales para cualquier ocasión, se adaptan a tu día a día con un diseño moderno y
+                    versátil.</p>
+
+
+                <form class="formulario" action="{{ url_for('producto', id=producto['id']) }}" method="post">
+                    <label for="nombre" class="formulario__label">Nombre:</label>
+                    <input id="nombre" name="nombre" class="formulario__campo" type="text" required
+                        pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
+
+
+                    <label for="telefono" class="formulario__label">Teléfono:</label>
+                    <input id="telefono" name="telefono" class="formulario__campo" type="tel" required
+                        pattern="[0-9]{7,8}" title="Solo números, mínimo 7 y máximo 8 dígitos">
+
+                    <label for="talla" class="formulario__label">Talla:</label>
+                    <select id="talla" name="talla" class="formulario__campo" required>
+                        <option disabled selected value="">Seleccionar Talla</option>
+                        <option value="chica">Chica</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="grande">Grande</option>
+                    </select>
+
+                    <label for="cantidad" class="formulario__label">Cantidad:</label>
+                    <input id="cantidad" name="cantidad" class="formulario__cantidad" type="number"
+                        placeholder="Cantidad" min="1" step="1" required title="Solo números enteros positivos">
+
+                    <input class="formulario__submit" type="submit" value="Agregar al Carrito">
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__texto">
+            Tienda de Ropa - Todos los derechos Reservados 2025
+            <img src="{{ url_for('static', filename='img/bo.png') }}" alt="Bandera de Bolivia"
+                style="height: 15px; width: auto; vertical-align: middle; margin-left: 5px;">
+        </p>
+    </footer>
+
+</body>
+
+</html>

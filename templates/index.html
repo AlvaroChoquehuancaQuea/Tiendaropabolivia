@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es-BO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiendaVirtual </title> <!-- Título que aparece en la pestaña -->
+    <link rel="icon" href="{{ url_for('static', filename='bo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <h1>TIENDA DE ROPA<img src="{{ url_for('static', filename='img/bo.png') }}" alt="Bandera de Bolivia"
+                style="height: 30px; width: auto; vertical-align: middle; margin-left: 8px;">
+        </h1>
+
+    </header>
+
+    <nav class="navegacion">
+        <a class="navegacion__enlace navegacion__enlace--activo" href="{{ url_for('tienda') }}">Tienda</a>
+        <a class="navegacion__enlace" href="{{ url_for('nosotros') }}">Nosotros</a>
+    </nav>
+
+    <main class="contenedor">
+        <h1>Nuestros Productos</h1>
+
+
+        <div class="grid">
+            {% for producto in productos %}
+            <!-- Cada producto ocupa 1 bloque (columna) dentro de la grilla -->
+            <div class="producto">
+                <a href="{{ url_for('producto', id=producto.id) }}">
+                    <img class="producto__imagen" src="{{ url_for('static', filename='img/' + producto.imagen) }}"
+                        alt="imagen {{ producto.nombre }}">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">{{ producto.nombre }}</p>
+                        <p class="producto__precio">{{ producto.precio }} Bs</p>
+                    </div>
+                </a>
+            </div>
+
+            {% if loop.index == 3 %}
+            <!-- Salto de fila para que la imagen decorativa inicie en nueva fila -->
+            <div class="salto-fila"></div>
+            <!-- Imagen decorativa colocada después del 3er producto, ocupa columnas 1 y 2 -->
+            <div class="decorativa decorativa--derecha">
+                <img src="{{ url_for('static', filename='img/grafico2.jpg') }}" alt="Decoración Derecha">
+            </div>
+            {% endif %}
+
+            {% if loop.index == 6 %}
+            <!-- Otro salto de fila después del 6to producto -->
+            <div class="salto-fila"></div>
+            <!-- Imagen decorativa colocada después del 6to producto, ocupa columnas 2 y 3 -->
+            <div class="decorativa decorativa--izquierda">
+                <img src="{{ url_for('static', filename='img/grafico1.jpg') }}" alt="Decoración Izquierda">
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p class="footer__texto">
+            Tienda de Ropa - Todos los derechos Reservados 2025
+            <img src="{{ url_for('static', filename='img/bo.png') }}" alt="Bandera de Bolivia"
+                style="height: 15px; width: auto; vertical-align: middle; margin-left: 5px;">
+        </p>
+    </footer>
+
+</body>
+
+</html>

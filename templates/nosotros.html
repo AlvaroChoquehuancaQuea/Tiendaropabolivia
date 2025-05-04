@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiendaVirtual</title> <!-- Título que aparece en la pestaña -->
+    <link rel="icon" href="{{ url_for('static', filename='bo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <!--<a href="index.html">
+            <img class="header__logo" src="img/logo.png" alt="Logotipo">
+        </a>-->
+        <h1>TIENDA DE ROPA<img src="{{ url_for('static', filename='img/bo.png') }}" alt="Bandera de Bolivia"
+                style="height: 30px; width: auto; vertical-align: middle; margin-left: 8px;"></h1>
+    </header>
+
+    <nav class="navegacion">
+        <a class="navegacion__enlace" href="{{ url_for('tienda') }}">Tienda</a>
+        <a class="navegacion__enlace navegacion__enlace--activo" href="{{ url_for('nosotros') }}">Nosotros</a>
+    </nav>
+
+    <main class="contenedor">
+        <h1>Nosotros</h1>
+
+        <div class="nosotros">
+            <div class="nosotros__contenido">
+                <p>En Tienda de Ropa nos apasiona el estilo, la comodidad y la calidad. Nacimos con el propósito de
+                    ofrecer prendas modernas, accesibles y pensadas para realzar la personalidad de cada cliente.
+                    Creemos que vestirse bien no debe ser complicado ni costoso.</p>
+
+                <p>Cada una de nuestras camisas está diseñada para adaptarse a tu ritmo de vida, combinando diseño,
+                    confort y durabilidad. Trabajamos con dedicación para brindarte la mejor experiencia de compra, ya
+                    sea online o en tienda física. ¡Gracias por elegirnos y formar parte de nuestra historia!</p>
+            </div>
+            <img class="nosotros__imagen" src="{{ url_for('static', filename='img/nosotros.jpg') }}"
+                alt="imagen nosotros">
+        </div>
+    </main>
+
+    <section class="contenedor comprar">
+        <h2 class="comprar__titulo">¿Porqué Comprar con nosotros?</h2>
+
+        <div class="bloques">
+            <div class="bloque">
+                <img class="bloque__imagen" src="{{ url_for('static', filename='img/icono_1.png') }}"
+                    alt="mejor precio">
+                <h3 class="bloque__titulo">El Mejor Precio</h3>
+                <p>Ofrecemos precios justos y accesibles para que todos puedan vestir con estilo sin gastar de más.
+                    ¡Calidad garantizada en cada prenda!</p>
+            </div> <!--.bloque-->
+
+            <div class="bloque">
+                <img class="bloque__imagen" src="{{ url_for('static', filename='img/icono_2.png') }}" alt="para devs">
+                <h3 class="bloque__titulo">Diseños Modernos</h3>
+                <p>Inspirados en la juventud boliviana, nuestros productos combinan estilo urbano, cultura y tendencias
+                    actuales. ¡Ropa que se adapta a ti!</p>
+            </div> <!--.bloque-->
+
+            <div class="bloque">
+                <img class="bloque__imagen" src="{{ url_for('static', filename='img/icono_3.png') }}"
+                    alt="envío gratis">
+                <h3 class="bloque__titulo">Envío Gratis</h3>
+                <p>Realizamos envíos gratuitos a todo el país en pedidos mayores a Bs. 200. Recibe tus compras sin costo
+                    adicional.</p>
+            </div> <!--.bloque-->
+
+            <div class="bloque">
+                <img class="bloque__imagen" src="{{ url_for('static', filename='img/icono_4.png') }}"
+                    alt="mejor calidad">
+                <h3 class="bloque__titulo">La Mejor Calidad</h3>
+                <p>Nuestras prendas están fabricadas con materiales de alta durabilidad y confort, ideales para el clima
+                    y ritmo de vida boliviano.</p>
+            </div> <!--.bloque-->
+        </div><!--.bloques-->
+
+    </section>
+
+
+
+</body>
+<footer class="footer">
+    <p class="footer__texto">
+        Tienda de Ropa - Todos los derechos Reservados 2025
+        <img src="{{ url_for('static', filename='img/bo.png') }}" alt="Bandera de Bolivia"
+            style="height: 15px; width: auto; vertical-align: middle; margin-left: 5px;">
+    </p>
+</footer>
+
+</html>
